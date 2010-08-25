@@ -27,7 +27,11 @@ def switch(next):
     global _current
 
     _current = next
-    next.greenlet.switch(*next.args, **next.kwargs)
+    if next.firstrun:
+        next.firstrun = False
+        next.greenlet.switch(*next.args, **next.kwargs)
+    else:
+        next.greenlet.switch()
 
 def schedule():
     """Schedule a new tasklet.
@@ -73,6 +77,7 @@ class tasklet(object):
         global _scheduled
         
         self.greenlet = greenlet.greenlet(func)
+        self.firstrun = True
         self.alive = True
         self.blocked = False
         self.args = ()
