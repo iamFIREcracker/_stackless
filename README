@@ -1,0 +1,4 @@
+_stackless
+==========
+
+Implementation of stackless API on top of the greenlet module.
