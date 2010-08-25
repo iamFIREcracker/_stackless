@@ -1,4 +1,10 @@
 _stackless
 ==========
 
+description
+-----------
 Implementation of stackless API on top of the greenlet module.
+
+credits
+-------
+http://aigamedev.com/open/articles/round-robin-multi-tasking/
